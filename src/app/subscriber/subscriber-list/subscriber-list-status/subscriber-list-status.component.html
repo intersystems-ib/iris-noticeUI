@@ -1,0 +1,93 @@
+<div class="">
+<mat-table [dataSource]="subscribers$ | async" class="result-table mat-elevation-z8">
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <span matTooltip="Clear filters">
+        <button mat-icon-button color="accent" (click)="clickResetFilters()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">
+      <button mat-icon-button routerLink="/subscriber/{{ subscriber._id }}">
+        <mat-icon aria-label="View">edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber._id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeId">
+    <mat-header-cell *matHeaderCellDef>
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Employee ID" [(ngModel)]="filters.employeeId" (change)="onChangeFilter($event)">
+        </mat-form-field>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.EmployeeId}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="filters.name" (change)="onChangeFilter($event)">
+        </mat-form-field>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.Name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef>
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="SurName" [(ngModel)]="filters.surname" (change)="onChangeFilter($event)">
+        </mat-form-field>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.SurName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="filters.email" (change)="onChangeFilter($event)">
+        </mat-form-field>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.Email}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="subscriptions">
+    <mat-header-cell *matHeaderCellDef>Subscriptions</mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.NumSubscriptions}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="notifications">
+    <mat-header-cell *matHeaderCellDef>Pull / Push</mat-header-cell>
+    <mat-cell *matCellDef="let subscriber">{{subscriber.PullNotifications}} / {{subscriber.PushNotifications}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<!--<div class="spinner-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>-->
+
+<mat-paginator #paginator [length]="totalResults" [pageSize]="50" [pageSizeOptions]="[10, 20, 50]" (page)="onChangePage($event)"></mat-paginator>
+
+<!-- Button bar -->
+<div class="buttonBar">
+  <div class="buttonBarButtons">
+    <button mat-raised-button color="primary" (click)="newSubscriber()" style='margin-right: 10px;'>New</button>
+  </div>
+</div>
+</div>

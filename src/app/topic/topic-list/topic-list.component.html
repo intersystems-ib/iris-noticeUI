@@ -1,0 +1,17 @@
+<mat-tab-group>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>visibility</mat-icon> ACTIVE
+    </ng-template>
+    <app-topic-list-status status='active'></app-topic-list-status>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>visibility_off</mat-icon> INACTIVE
+    </ng-template>
+    <app-topic-list-status status='inactive'></app-topic-list-status>
+  </mat-tab>
+  
+</mat-tab-group>

@@ -1,0 +1,195 @@
+<div class="container" *ngIf="(subscriber$ | async) as subscriber">
+  <form #subscriberDetailsForm="ngForm" (ngSubmit)="save()">
+    <div style='margin-top:20px;'>
+	      <span class="app-title-label">Subscriber Details</span>
+	  </div>
+    <mat-divider></mat-divider>
+
+    <!-- Subscriber Details -->
+    <div style = "height: 100px;">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">ID</mat-label>
+          <input matInput [(ngModel)]="subscriberId" [name]="'ID_' + subscriberId" disabled>
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Name</mat-label>
+          <input matInput [(ngModel)]="subscriber.Name" name="Name">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">SurName</mat-label>
+          <input matInput [(ngModel)]="subscriber.SurName" name="SurName">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Language</mat-label>
+          <mat-select [(ngModel)]="subscriber.Lang" name="Lang">
+            <mat-option [value]="language._id" *ngFor="let language of languages$">{{ language.Description }} ({{ language.ISO }})</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-slide-toggle [(ngModel)]="subscriber.Active" name="Active">Active</mat-slide-toggle>
+      </div>
+    </div>
+
+    <!-- Identification Numbers -->
+    <div style = "width: 49%; float:left;">
+      <div> 
+			  <span class="app-title-label">Identification Numbers</span>
+   	    <span matTooltip="New Identification Number">
+				  <button type="button" mat-icon-button color="accent" (click)="clickAddIdentificationNumber()" [disabled]="subscriberDetailsForm.dirty">
+				    <mat-icon>add_circle</mat-icon>
+				  </button>
+			  </span>
+      </div>
+		  <mat-divider></mat-divider>
+
+      <mat-table [dataSource]="identificationNumbers$ | async" class="result-table mat-elevation-z0">
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let identificationNumber">
+            <button type="button" mat-icon-button (click)="clickEditIdentificationNumber(identificationNumber)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="clickDeleteIdentificationNumber(identificationNumber)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *matCellDef="let identificationNumber">{{identificationNumber.ID}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *matCellDef="let identificationNumber">{{identificationNumber.Type}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+          <mat-header-cell *matHeaderCellDef>Code</mat-header-cell>
+          <mat-cell *matCellDef="let identificationNumber">{{identificationNumber.Code}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="inDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: inDisplayedColumns"></mat-row>
+      </mat-table>
+    </div>
+
+    <!-- Contact Ways -->
+    <div style = "width: 49%; float:right;">
+      <div> 
+			  <span class="app-title-label">Contact Ways</span>
+   	    <span matTooltip="New Contact Way">
+				  <button type="button" mat-icon-button color="accent" (click)="clickAddContactWay()" [disabled]="subscriberDetailsForm.dirty">
+				    <mat-icon>add_circle</mat-icon>
+				  </button>
+			  </span>
+      </div>
+		  <mat-divider></mat-divider>
+
+      <mat-table [dataSource]="contactWays$ | async" class="result-table mat-elevation-z0">
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let contactWay">
+            <button type="button" mat-icon-button (click)="clickEditContactWay(contactWay)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="clickDeleteContactWay(contactWay)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *matCellDef="let contactWay">{{contactWay.ID}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *matCellDef="let contactWay">{{contactWay.Type}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+          <mat-cell *matCellDef="let contactWay">{{contactWay.Address}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="cwDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: cwDisplayedColumns"></mat-row>
+      </mat-table>
+
+    </div>
+
+    <!-- Subscriptions -->
+    <div style = "width: 49%; float:left;">
+      <div> 
+			  <span class="app-title-label">Subscriptions</span>
+   	    <span matTooltip="New Subscription">
+				  <button type="button" mat-icon-button color="accent" (click)="clickAddSubscription()" [disabled]="subscriberDetailsForm.dirty">
+				    <mat-icon>add_circle</mat-icon>
+				  </button>
+			  </span>
+      </div>
+		  <mat-divider></mat-divider>
+
+      <mat-table [dataSource]="subscriptions$ | async" class="result-table mat-elevation-z0">
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let subscription">
+            <button type="button" mat-icon-button (click)="clickEditSubscription(subscription)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button type="button" mat-icon-button (click)="clickDeleteSubscription(subscription)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *matCellDef="let subscription">{{subscription.ID}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="topic">
+          <mat-header-cell *matHeaderCellDef>Topic</mat-header-cell>
+          <mat-cell *matCellDef="let subscription">{{subscription.Topic}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="sDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: sDisplayedColumns"></mat-row>
+      </mat-table>
+
+    </div>
+
+    <!-- Last Notifications -->
+    <div style = "width: 49%; float:right;">
+      <div> 
+			  <span class="app-title-label">Last Notifications</span>
+      </div>
+		  <mat-divider></mat-divider>
+
+      <mat-table [dataSource]="lastNotifications$ | async" class="result-table mat-elevation-z0">
+        <ng-container matColumnDef="id">
+          <mat-cell *matCellDef="let notification">{{notification.ID}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="text">
+          <mat-cell *matCellDef="let notification">{{notification.Date}} - {{notification.Type}} - {{notification.Text}}</mat-cell>
+        </ng-container>
+
+        <mat-row *matRowDef="let row; columns: lnDisplayedColumns"></mat-row>
+      </mat-table>
+
+    </div>
+
+
+    <!-- Button bar -->
+		<div class="buttonBar">
+			<div class="buttonBarButtons">
+				<button type="submit" mat-raised-button color="primary" style='margin-right: 10px;' [disabled]="(subscriberDetailsForm.pristine) ">Save</button>
+				<button type="button" mat-raised-button (click)="goBack()">Back</button>
+			</div>		
+		</div>
+  </form>
+</div>

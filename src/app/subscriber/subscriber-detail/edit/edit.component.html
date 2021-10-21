@@ -1,0 +1,28 @@
+<span> {{ data.title }}</span>
+<mat-divider></mat-divider>
+<div mat-dialog-content style='margin-top: 20px;'>
+  <mat-form-field appearance="fill" *ngIf="!data.isTypeAutocomplete">
+    <mat-label>{{ data.typeLabel }}</mat-label>
+    <input matInput [formControl]="type">
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="data.isTypeAutocomplete">
+    <mat-label>{{ data.typeLabel }}</mat-label>
+    <input type="text"
+           matInput
+           [formControl]="typeAutocomplete"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="hasValue">
+    <mat-label>{{ data.valueLabel }}</mat-label>
+    <input matInput [formControl]="value">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onSave()" style='margin-right: 10px;'>Save</button>
+  <button mat-raised-button (click)="onCancel()" style='margin-right: 10px;'>Cancel</button>
+</div>

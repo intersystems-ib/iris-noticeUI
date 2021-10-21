@@ -1,0 +1,48 @@
+.container {
+  margin-top: 5px;
+}
+  
+/** mat-tooltip. break lines */
+::ng-deep .mat-tooltip {
+  white-space: pre-line  !important;
+}
+  
+.mat-column-actions {
+  flex: 0 0 5% !important;
+}
+  
+.mat-column-id {
+  flex: 0 0 5% !important;
+}
+  
+.mat-column-topicKey {
+  flex: 0 0 15% !important;
+}
+  
+.mat-column-contactWay {
+  flex: 0 0 5% !important;
+  margin-right: 10px;
+}
+  
+.mat-column-format {
+  flex: 0 0 5% !important;
+  margin-right: 10px;
+}
+  
+.mat-column-destination {
+  flex: 0 0 10% !important;
+  margin-right: 10px;
+}
+  
+.mat-column-botName {
+  flex: 0 0 7% !important;
+  margin-right: 10px;
+}
+
+.mat-column-template {
+  flex: 0 0 40% !important;
+}
+  
+.mat-column-notifications {
+  flex: 0 0 5% !important;
+}
