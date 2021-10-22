@@ -7,5 +7,6 @@ export interface Topic {
     Destination: string;
     BotName: string;
     Template: string;
+    Active: boolean;
     Notifications: number;
 }

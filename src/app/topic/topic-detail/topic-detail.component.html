@@ -1,1 +1,47 @@
-<p>topic-detail works!</p>
+<div class="container" *ngIf="(topic$ | async) as topic">
+  <form #topicDetailsForm="ngForm" (ngSubmit)="save()">
+    <div style='margin-top:20px;'>
+      <span class="app-title-label">Topic Details</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- Topic Details -->
+    <div style = "height: 100px;">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">ID</mat-label>
+          <input matInput [(ngModel)]="topicId" [name]="'ID_' + topicId" disabled>
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Topic Key</mat-label>
+          <input matInput [(ngModel)]="topic.TopicKey" name="TopicKey">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">ContactWay</mat-label>
+          <input matInput [(ngModel)]="topic.ContactWay" name="ContactWay">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Format</mat-label>
+          <input matInput [(ngModel)]="topic.Format" name="Format">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">BotName</mat-label>
+          <input matInput [(ngModel)]="topic.BotName" name="BotName">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Destination</mat-label>
+          <input matInput [(ngModel)]="topic.Destination" name="Destination">
+        </mat-form-field>
+        <mat-slide-toggle [(ngModel)]="topic.Active" name="Active">Active</mat-slide-toggle>
+      </div>
+    </div>
+
+    <!-- Button bar -->
+    <div class="buttonBar">
+      <div class="buttonBarButtons">
+        <button type="submit" mat-raised-button color="primary" style='margin-right: 10px;' [disabled]="(topicDetailsForm.pristine) ">Save</button>
+        <button type="button" mat-raised-button (click)="goBack()">Back</button>
+      </div>		
+    </div>
+  </form>
+</div>

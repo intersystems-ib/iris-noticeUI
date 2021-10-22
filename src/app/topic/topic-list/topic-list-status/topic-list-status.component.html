@@ -9,7 +9,7 @@
         </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let topic">
-        <button mat-icon-button (click)="editTopic(topic)">
+        <button mat-icon-button routerLink="/topic/{{ topic._id }}">
           <mat-icon aria-label="View">edit</mat-icon>
         </button>
       </mat-cell>

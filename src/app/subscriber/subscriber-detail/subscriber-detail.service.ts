@@ -1,15 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { ContactWay, IdentificationNumber, Language, Notification, Subscriber, Subscription } from '../subscriber.model';
-
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
-
 import { environment } from '../../../environments/environment';
-import { QueryResult } from '../../core/query-result.model';
 import { AlertService } from '../../core/alert.service';
-import { Topic } from 'src/app/topic/topic.model';
-
+import { QueryResult } from '../../core/query-result.model';
+import { Topic } from '../../topic/topic.model';
+import { ContactWay, IdentificationNumber, Language, Notification, Subscriber, Subscription } from '../subscriber.model';
 
 @Injectable({
   providedIn: 'root'

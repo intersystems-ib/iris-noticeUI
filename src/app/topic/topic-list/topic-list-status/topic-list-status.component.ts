@@ -98,10 +98,6 @@ export class TopicListStatusComponent
     console.log('new topic');
   }
 
-  editTopic(row: any) {
-    console.log('edit topic');
-  }
-
   private isActiveStatus(): boolean {
     return this.status === 'active'
   }

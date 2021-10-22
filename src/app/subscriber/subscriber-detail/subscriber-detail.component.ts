@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { ContactWay, IdentificationNumber, Language, Notification, Subscriber, Subscription } from '../subscriber.model';
-import { SubscriberDetailService } from './subscriber-detail.service';
 import { ConfirmDialogComponent } from '../../core/confirm-dialog/confirm-dialog.component';
+import { ContactWay, IdentificationNumber, Language, Notification, Subscriber, Subscription } from '../subscriber.model';
 import { EditComponent } from './edit/edit.component';
-import { Topic } from 'src/app/topic/topic.model';
+import { SubscriberDetailService } from './subscriber-detail.service';
 
 @Component({
   selector: 'app-subscriber-detail',
@@ -18,7 +17,6 @@ import { Topic } from 'src/app/topic/topic.model';
 })
 export class SubscriberDetailComponent implements OnInit {
 
-  @Input()
   subscriberId: number;
 
   subscriber$: Observable<Subscriber>;
@@ -80,9 +78,7 @@ export class SubscriberDetailComponent implements OnInit {
 
   loadData() {
 
-    if (!this.subscriberId) {
-      this.subscriberId = +this.route.snapshot.paramMap.get("subscriberId");
-    }
+    this.setSubscriberId();
 
     this.loading$.next(true);
 
@@ -110,6 +106,17 @@ export class SubscriberDetailComponent implements OnInit {
     );
     
     this.loading$.next(false);
+  }
+
+  private setSubscriberId(): void {
+
+    if (!this.subscriberId && this.route.snapshot.paramMap != null) {
+
+      let paramSubscriberId = this.route.snapshot.paramMap.get("subscriberId");
+      if (paramSubscriberId != null) {
+        this.subscriberId = +paramSubscriberId;
+      }
+    }
   }
 
   save(): void {
