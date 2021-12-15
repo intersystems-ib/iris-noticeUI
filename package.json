@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:base": "ng build --configuration base",
+    "build:uat": "ng build --configuration uat",
+    "build:live": "ng build --configuration live"
   },
   "private": true,
   "dependencies": {
