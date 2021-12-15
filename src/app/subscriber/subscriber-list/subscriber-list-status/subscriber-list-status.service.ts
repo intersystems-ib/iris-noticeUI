@@ -14,6 +14,7 @@ import { QueryResult } from '../../../core/query-result.model';
 export class SubscriberListStatusService {
 
   private urlBaseForms = environment.urlBaseForms
+  private noticePackage = environment.noticePackage
   private options = { };
 
   constructor(
@@ -25,7 +26,7 @@ export class SubscriberListStatusService {
     let escapedFilter = this.getEscapedFilter(query);
 
     return this.http.get<QueryResult<Subscriber>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Subscriber/list?size=${pageSize}&page=${pageIndex}&filter=${escapedFilter}&orderby=Name`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Subscriber/list?size=${pageSize}&page=${pageIndex}&filter=${escapedFilter}&orderby=Name`,
       this.options
     ).pipe(
       catchError(err => {
@@ -38,7 +39,7 @@ export class SubscriberListStatusService {
 
   newSubscriber(): Observable<Subscriber> {
 
-    return this.http.post<Subscriber>(this.urlBaseForms + `/object/Notice.DAT.Subscriber`,
+    return this.http.post<Subscriber>(this.urlBaseForms + `/object/${this.noticePackage}.Subscriber`,
       {Active: false},
       this.options
     ).pipe(

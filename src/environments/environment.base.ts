@@ -14,7 +14,8 @@ export const environment = {
   authLocalStorageKey: 'pubsub-base-auth',
 
   /** REST API base URL */
-  urlBaseForms: 'http://es-ibserver2.iscinternal.com:39080/forms/notice/form'
+  urlBaseForms: 'http://es-ibserver2.iscinternal.com:39080/forms/notice/form',
+  noticePackage: 'Notice.DAT'
 };
 
 /*

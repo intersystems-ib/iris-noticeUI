@@ -14,6 +14,7 @@ import { ContactWay, IdentificationNumber, Language, Notification, Subscriber, S
 export class SubscriberDetailService {
 
   private urlBaseForms = environment.urlBaseForms
+  private noticePackage = environment.noticePackage
   private options = { };
 
   constructor(
@@ -24,7 +25,7 @@ export class SubscriberDetailService {
   getSubscriberById(id: number): Observable<Subscriber> {
 
     return this.http.get<Subscriber>(
-      this.urlBaseForms + `/object/Notice.DAT.Subscriber/${id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Subscriber/${id}`,
       this.options
     ).pipe(
       catchError(err => {
@@ -43,7 +44,7 @@ export class SubscriberDetailService {
       Lang: subscriber.Lang
     };
     return this.http.put<Subscriber>(
-      this.urlBaseForms + `/object/Notice.DAT.Subscriber/${subscriber._id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Subscriber/${subscriber._id}`,
       data,
       this.options
     ).pipe(
@@ -57,7 +58,7 @@ export class SubscriberDetailService {
   getLanguages(): Observable<QueryResult<Language>> {
 
     return this.http.get<QueryResult<Language>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Lang/list?orderby=Description`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Lang/list?orderby=Description`,
       this.options
     ).pipe(
       catchError(err => {
@@ -72,7 +73,7 @@ export class SubscriberDetailService {
     let escapedFilter = `Active+eq+1`;
 
     return this.http.get<QueryResult<Topic>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Topic/listTopicKeys?filter=${escapedFilter}&orderby=TopicKey`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Topic/listTopicKeys?filter=${escapedFilter}&orderby=TopicKey`,
       this.options
     ).pipe(
       catchError(err => {
@@ -87,7 +88,7 @@ export class SubscriberDetailService {
     let escapedFilter = `Subscriber+eq+${subscriberId}`;
 
     return this.http.get<QueryResult<IdentificationNumber>>(
-      this.urlBaseForms + `/objects/Notice.DAT.UserID/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.UserID/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
       this.options
     ).pipe(
       catchError(err => {
@@ -106,7 +107,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.post<IdentificationNumber>(
-      this.urlBaseForms + `/object/Notice.DAT.UserID`,
+      this.urlBaseForms + `/object/${this.noticePackage}.UserID`,
       data,
       this.options
     ).pipe(
@@ -125,7 +126,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.put<IdentificationNumber>(
-      this.urlBaseForms + `/object/Notice.DAT.UserID/${identificationNumber._id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.UserID/${identificationNumber._id}`,
       data,
       this.options
     ).pipe(
@@ -139,7 +140,7 @@ export class SubscriberDetailService {
   deleteIdentificationNumber(id: number): Observable<IdentificationNumber> {
 
     return this.http.delete<IdentificationNumber>(
-      this.urlBaseForms + `/object/Notice.DAT.UserID/${id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.UserID/${id}`,
       this.options
     ).pipe(
       map(() => <IdentificationNumber>{}),
@@ -155,7 +156,7 @@ export class SubscriberDetailService {
     let escapedFilter = `Subscriber+eq+${subscriberId}`;
 
     return this.http.get<QueryResult<ContactWay>>(
-      this.urlBaseForms + `/objects/Notice.DAT.ContactWay/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.ContactWay/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
       this.options
     ).pipe(
       catchError(err => {
@@ -174,7 +175,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.post<ContactWay>(
-      this.urlBaseForms + `/object/Notice.DAT.ContactWay`,
+      this.urlBaseForms + `/object/${this.noticePackage}.ContactWay`,
       data,
       this.options
     ).pipe(
@@ -193,7 +194,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.put<ContactWay>(
-      this.urlBaseForms + `/object/Notice.DAT.ContactWay/${contactWay._id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.ContactWay/${contactWay._id}`,
       data,
       this.options
     ).pipe(
@@ -207,7 +208,7 @@ export class SubscriberDetailService {
   deleteContactWay(id: number): Observable<ContactWay> {
 
     return this.http.delete<ContactWay>(
-      this.urlBaseForms + `/object/Notice.DAT.ContactWay/${id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.ContactWay/${id}`,
       this.options
     ).pipe(
       map(() => <ContactWay>{}),
@@ -223,7 +224,7 @@ export class SubscriberDetailService {
     let escapedFilter = `Subscriber+eq+${subscriberId}`;
 
     return this.http.get<QueryResult<Subscription>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Subscription/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Subscription/list?size=50&page=1&filter=${escapedFilter}&orderby=2`,
       this.options
     ).pipe(
       catchError(err => {
@@ -241,7 +242,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.post<Subscription>(
-      this.urlBaseForms + `/object/Notice.DAT.Subscription`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Subscription`,
       data,
       this.options
     ).pipe(
@@ -259,7 +260,7 @@ export class SubscriberDetailService {
     };
 
     return this.http.put<Subscription>(
-      this.urlBaseForms + `/object/Notice.DAT.Subscription/${subscription._id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Subscription/${subscription._id}`,
       data,
       this.options
     ).pipe(
@@ -273,7 +274,7 @@ export class SubscriberDetailService {
   deleteSubscription(id: number): Observable<Subscription> {
 
     return this.http.delete<Subscription>(
-      this.urlBaseForms + `/object/Notice.DAT.Subscription/${id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Subscription/${id}`,
       this.options
     ).pipe(
       map(() => <Subscription>{}),
@@ -289,7 +290,7 @@ export class SubscriberDetailService {
     let escapedFilter = `Subscriber+eq+${subscriberId}+Result+eq+OK`;
 
     return this.http.get<QueryResult<Notification>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Notification/list?size=5&page=1&filter=${escapedFilter}&orderby=2+desc`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Notification/list?size=5&page=1&filter=${escapedFilter}&orderby=2+desc`,
       this.options
     ).pipe(
       catchError(err => {

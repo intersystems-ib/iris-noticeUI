@@ -14,6 +14,7 @@ import { QueryResult } from '../../../core/query-result.model';
 export class TopicListStatusService {
 
   private urlBaseForms = environment.urlBaseForms
+  private noticePackage = environment.noticePackage
   private options = {"headers": {
     "Content-Type": "application/json",
     "Authorization": "Basic ZGdvbnphbGV6OmRnb256YWxlejEyMw=="
@@ -28,7 +29,7 @@ export class TopicListStatusService {
     let escapedFilter = this.getEscapedFilter(query);
 
     return this.http.get<QueryResult<Topic>>(
-      this.urlBaseForms + `/objects/Notice.DAT.Topic/list?size=${pageSize}&page=${pageIndex}&filter=${escapedFilter}&orderby=TopicKey`,
+      this.urlBaseForms + `/objects/${this.noticePackage}.Topic/list?size=${pageSize}&page=${pageIndex}&filter=${escapedFilter}&orderby=TopicKey`,
       this.options
     ).pipe(
       catchError(err => {

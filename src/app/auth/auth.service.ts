@@ -9,9 +9,10 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  private noticePackage = environment.noticePackage
 
   /** Backend API used to login. We can use any URL that will enforce an IRIS Basic Auth */
-  authApiUrl: string = environment.urlBaseForms + '/info/Notice.DAT.Subscriber';
+  authApiUrl: string = environment.urlBaseForms + `/info/${this.noticePackage}.Subscriber`;
 
   /** isLoginSubject is used to know if the user is logged in or not */
   isLoginSubject = new BehaviorSubject<boolean>(this.authenticated());

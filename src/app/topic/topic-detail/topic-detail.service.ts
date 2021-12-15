@@ -12,6 +12,7 @@ import { Topic } from '../../topic/topic.model';
 export class TopicDetailService {
 
   private urlBaseForms = environment.urlBaseForms
+  private noticePackage = environment.noticePackage
   private options = { };
 
   constructor(
@@ -22,7 +23,7 @@ export class TopicDetailService {
   getTopicById(id: number): Observable<Topic> {
 
     return this.http.get<Topic>(
-      this.urlBaseForms + `/object/Notice.DAT.Topic/${id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Topic/${id}`,
       this.options
     ).pipe(
       catchError(err => {
@@ -44,7 +45,7 @@ export class TopicDetailService {
       Active: topic.Active
     };
     return this.http.put<Topic>(
-      this.urlBaseForms + `/object/Notice.DAT.Topic/${topic._id}`,
+      this.urlBaseForms + `/object/${this.noticePackage}.Topic/${topic._id}`,
       data,
       this.options
     ).pipe(
