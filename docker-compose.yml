@@ -7,7 +7,7 @@ services:
     build:
       context: .
       args:
-        NG_BUILD_OPTS: build
+        NG_BUILD_OPTS: build   #build:base|build:uat|build:live
     container_name: httpdnotice
     ports:
     - "8080:80"
