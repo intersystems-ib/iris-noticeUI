@@ -7,13 +7,13 @@ export const environment = {
 
   /** navbar info **/
   name: 'live',
-  description: '[local-live]',
-  tooltip: 'LIVE',
+  description: '🍒 LIVE',
+  tooltip: 'This is LIVE!!',
 
   /** local storage key used to store the credentials */
   authLocalStorageKey: 'pubsub-live-auth',
 
   /** REST API base URL */
-  urlBase: 'http://es-ibserver2.iscinternal.com/api/not/pubsub/v1',
+  urlBaseForms: 'http://es-ibserver2.iscinternal.com/forms/notice/form'
 
 };

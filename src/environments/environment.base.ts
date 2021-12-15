@@ -7,16 +7,14 @@ export const environment = {
 
   /** navbar info **/
   name: 'base',
-  description: '[local-base]',
-  tooltip: 'BASE',
+  description: '🍏 BASE',
+  tooltip: 'Keep calm, this is BASE',
 
   /** local storage key used to store the credentials */
   authLocalStorageKey: 'pubsub-base-auth',
 
   /** REST API base URL */
-  urlBase: 'http://es-ibserver2.iscinternal.com:39080/api/not/pubsub/v1',
-  urlBaseForms: 'http://es-ibserver2.iscinternal.com:39080/forms/notice/form',
-
+  urlBaseForms: 'http://es-ibserver2.iscinternal.com:39080/forms/notice/form'
 };
 
 /*
