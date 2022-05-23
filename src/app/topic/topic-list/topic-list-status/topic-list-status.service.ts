@@ -15,10 +15,7 @@ export class TopicListStatusService {
 
   private urlBaseForms = environment.urlBaseForms
   private noticePackage = environment.noticePackage
-  private options = {"headers": {
-    "Content-Type": "application/json",
-    "Authorization": "Basic ZGdvbnphbGV6OmRnb256YWxlejEyMw=="
-  }};
+  private options = { };
 
   constructor(
     private http: HttpClient
