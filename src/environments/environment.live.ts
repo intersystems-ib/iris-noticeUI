@@ -15,6 +15,7 @@ export const environment = {
 
   /** REST API base URL */
   urlBaseForms: 'http://es-ibserver2.iscinternal.com/forms/notice/form',
-  noticePackage: 'Notice.DAT'
+  noticePackage: 'Notice.DAT',
+  urlDashboard: ''
 
 };

@@ -17,6 +17,10 @@
   <button mat-button (click)="clickMasterFiles()">
     Master Files
   </button>
+
+  <button mat-button (click)="clickDashboard()" *ngIf="(hasDashboard$ | async)">
+    Dashboard
+  </button>
   
   <!-- right aligned buttons -->
   <span class="fill-space"></span>

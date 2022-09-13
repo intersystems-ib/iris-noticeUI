@@ -37,12 +37,19 @@ export class TopicDetailService {
 
     let data = {
       TopicKey: topic.TopicKey,
+      Template: topic.Template,
+      TemplateMsg: topic.TemplateMsg,
+      BotName: topic.BotName,
       ContactWay: topic.ContactWay,
       Format: topic.Format,
       Destination: topic.Destination,
-      BotName: topic.BotName,
-      Template: topic.Template,
-      Active: topic.Active
+      Active: topic.Active,
+      Subject: topic.Subject,
+      SubjectMsg: topic.SubjectMsg,
+      OutboundAdapter: topic.OutboundAdapter,
+      BodyFormat: topic.BodyFormat,
+      BodyTemplate: topic.BodyTemplate,
+      ExecutionComponent: topic.ExecutionComponent
     };
     return this.http.put<Topic>(
       this.urlBaseForms + `/object/${this.noticePackage}.Topic/${topic._id}`,

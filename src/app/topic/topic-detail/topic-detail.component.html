@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
 
     <!-- Topic Details -->
-    <div style = "height: 100px;">
+    <div >
       <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
         <mat-form-field floatLabel="always">
           <mat-label class="highlight-field">ID</mat-label>
@@ -16,23 +16,65 @@
           <mat-label class="highlight-field">Topic Key</mat-label>
           <input matInput [(ngModel)]="topic.TopicKey" name="TopicKey">
         </mat-form-field>
+        <mat-slide-toggle [(ngModel)]="topic.Active" name="Active">Active</mat-slide-toggle>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
         <mat-form-field floatLabel="always">
           <mat-label class="highlight-field">ContactWay</mat-label>
           <input matInput [(ngModel)]="topic.ContactWay" name="ContactWay">
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">Destination</mat-label>
+          <input matInput [(ngModel)]="topic.Destination" name="Destination">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">BotName</mat-label>
+          <input matInput [(ngModel)]="topic.BotName" name="BotName">
         </mat-form-field>
         <mat-form-field floatLabel="always">
           <mat-label class="highlight-field">Format</mat-label>
           <input matInput [(ngModel)]="topic.Format" name="Format">
         </mat-form-field>
         <mat-form-field floatLabel="always">
-          <mat-label class="highlight-field">BotName</mat-label>
-          <input matInput [(ngModel)]="topic.BotName" name="BotName">
+          <mat-label class="highlight-field">OutboundAdapter</mat-label>
+          <input matInput [(ngModel)]="topic.OutboundAdapter" name="OutboundAdapter">
         </mat-form-field>
         <mat-form-field floatLabel="always">
-          <mat-label class="highlight-field">Destination</mat-label>
-          <input matInput [(ngModel)]="topic.Destination" name="Destination">
+          <mat-label class="highlight-field">ExecutionComponent</mat-label>
+          <input matInput [(ngModel)]="topic.ExecutionComponent" name="ExecutionComponent">
         </mat-form-field>
-        <mat-slide-toggle [(ngModel)]="topic.Active" name="Active">Active</mat-slide-toggle>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">TemplateMsg</mat-label>
+          <input matInput [(ngModel)]="topic.TemplateMsg" name="TemplateMsg">
+        </mat-form-field>
+        <mat-form-field floatLabel="always" style="width: 800px;">
+          <mat-label class="highlight-field">Template</mat-label>
+          <textarea matInput cdkTextareaAutosize [(ngModel)]="topic.Template" name="Template"></textarea>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">SubjectMsg</mat-label>
+          <input matInput [(ngModel)]="topic.SubjectMsg" name="SubjectMsg">
+        </mat-form-field>
+        <mat-form-field floatLabel="always" style="width: 800px;">
+          <mat-label class="highlight-field">Subject</mat-label>
+          <textarea matInput cdkTextareaAutosize [(ngModel)]="topic.Subject" name="Subject"></textarea>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="3%">
+        <mat-form-field floatLabel="always">
+          <mat-label class="highlight-field">BodyFormat</mat-label>
+          <input matInput [(ngModel)]="topic.BodyFormat" name="BodyFormat">
+        </mat-form-field>
+        <mat-form-field floatLabel="always" style="width: 800px;">
+          <mat-label class="highlight-field">BodyTemplate</mat-label>
+          <textarea matInput cdkTextareaAutosize [(ngModel)]="topic.BodyTemplate" name="BodyTemplate"></textarea>
+        </mat-form-field>
       </div>
     </div>
 

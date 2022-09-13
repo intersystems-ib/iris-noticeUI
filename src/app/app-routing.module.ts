@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { BypassSecurityComponent } from './dashboard/bypass-security/bypass-security.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'topic',
     loadChildren: () => import('./topic/topic.module').then(m => m.TopicModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: BypassSecurityComponent,
     canActivate: [AuthGuard]
   },
   {

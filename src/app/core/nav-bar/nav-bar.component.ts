@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
@@ -16,12 +16,14 @@ export class NavBarComponent implements OnInit {
   envTooltip: string = environment.tooltip;
   envToolbarClass: string = 'mat-toolbar-' + environment.name;
   isLoggedIn$: Observable<boolean>;
+  hasDashboard$: Observable<boolean>
 
   constructor(
     private router: Router,
     private authService: AuthService
   ) {
     this.isLoggedIn$ = this.authService.isLoggedIn();
+    this.hasDashboard$ = new BehaviorSubject<boolean>((environment.urlDashboard != '')).asObservable();
   }
 
   ngOnInit(): void {
@@ -41,6 +43,10 @@ export class NavBarComponent implements OnInit {
 
   clickMasterFiles(): void {
     console.log('Master Files');
+  }
+
+  clickDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 
   clickLogin(): void {
