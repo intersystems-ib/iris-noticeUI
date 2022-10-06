@@ -49,7 +49,8 @@ export class TopicDetailService {
       OutboundAdapter: topic.OutboundAdapter,
       BodyFormat: topic.BodyFormat,
       BodyTemplate: topic.BodyTemplate,
-      ExecutionComponent: topic.ExecutionComponent
+      ExecutionComponent: topic.ExecutionComponent,
+      ValidationCommand: topic.ValidationCommand
     };
     return this.http.put<Topic>(
       this.urlBaseForms + `/object/${this.noticePackage}.Topic/${topic._id}`,

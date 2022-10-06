@@ -87,4 +87,22 @@ export class TopicDetailComponent implements OnInit {
     this.location.back();
   }
 
+  getValidationCommandTooltipText(): string {
+    return `Object script command that can use an IBSP.Notice.Messages.NoticeReq object named 'req'. It must set a boolean value in the variable 'res'.
+    It also has a status code in the variable 'sc', which is initialized to 1 (OK) by default.
+    Additionally, it can return a message in the variable 'msg'.
+    This command will be executed inside a try/catch, so, if it throws an exception, it will be caught and set in the variable 'sc' as a status.
+    It can also call a ClassMethod. This method must return a status code and, at least, must receive the variable 'res' as a parameter by reference.
+    
+    EXAMPLES:
+    - Direct command to execute:
+    set res = req.UserIdCode = "123456" set msg = "Message to return" set sc = 1
+    
+    - Calling a class with the full req object as a parameter:
+    set sc = ##class(Package.ClassName).FunctionName(req, .res, .msg)
+    
+    - Calling a class with req object properties as parameters
+    set sc = ##class(Package.ClassName).FunctionName(req.UserIdType, req.UserIdCode, .res, .msg)`;
+  }
+
 }

@@ -16,4 +16,5 @@ export interface Topic {
     BodyTemplate: string;
     ExecutionComponent: string;
     Notifications: number;
+    ValidationCommand: string;
 }

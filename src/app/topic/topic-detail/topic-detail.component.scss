@@ -31,3 +31,10 @@
     //height: 0px;
     line-height: 0px;
 }
+
+::ng-deep .mat-tooltip  {
+    white-space: pre-line !important;
+    max-width: unset !important;
+    font-size: 12px;
+    background: #3f51b5;
+}
