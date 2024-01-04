@@ -14,7 +14,7 @@ export const environment = {
   authLocalStorageKey: 'pubsub-live-auth',
 
   /** REST API base URL */
-  urlBaseForms: 'http://es-ibserver2.iscinternal.com/forms/notice/form',
+  urlBaseForms: 'https://es-apps.iscinternal.com/iris/forms/notice/form',
   noticePackage: 'Notice.DAT',
   urlDashboard: ''
 

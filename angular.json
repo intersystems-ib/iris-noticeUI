@@ -43,7 +43,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.base.ts"
                 }
-              ]
+              ],
+              "baseHref": "/not-base/"
             },
             "uat": {
               "fileReplacements": [
@@ -52,6 +53,7 @@
                   "with": "src/environments/environment.uat.ts"
                 }
               ],
+              "baseHref": "/not/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  httpnotice:
+    image: http-notice-base:latest
+    build:
+      context: .
+      args:
+        NG_BUILD_OPTS: build:base
+    container_name: httpd-notice-base
+    ports:
+    - "3082:80"
+
