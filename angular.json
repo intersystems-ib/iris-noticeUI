@@ -53,7 +53,7 @@
                   "with": "src/environments/environment.uat.ts"
                 }
               ],
-              "baseHref": "/not/",
+              "baseHref": "/not-uat/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -71,6 +71,7 @@
                   "with": "src/environments/environment.live.ts"
                 }
               ],
+              "baseHref": "/not/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
